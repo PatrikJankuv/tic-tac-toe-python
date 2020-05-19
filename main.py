@@ -8,9 +8,26 @@ game_in_progress = True
 def print_board(board):
     print("-------------")
     for x in board:
-        print("| " + x[0] + " | " + x[1] + " | " + x[2] + " |")
+        # print("| " + x[0] + " | " + x[1] + " | " + x[2] + " |")
+        print("| ", end = '')
+        print_element(x[0])
+        print(" | ", end = '')
+        print_element(x[1])
+        print(" | ", end = '')
+        print_element(x[2])
+        print(" |")
+
         print("-------------")
 
+def print_element(elem):
+    if(elem == 'X'):
+        print('\x1b[2;30;44m'
+              + elem + '\x1b[0m' , end = '')
+    elif(elem == 'O'):
+        print('\x1b[2;30;41m'
+              + elem + '\x1b[0m' , end = '')
+    else:
+        print(elem, end = '')
 
 def set_position(board, item, x, y):
     if((board[x][y] == 'X') | (board[x][y] == 'O')):
