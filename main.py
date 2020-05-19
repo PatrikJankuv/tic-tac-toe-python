@@ -51,7 +51,7 @@ def input_turn(chart):
         result = set_position(board, chart, 2, 2)
 
     if(result == False):
-        print("Invalid move, field already taken")
+        print('\x1b[6;30;42m' + 'Invalid move, field already taken'  + '\x1b[0m')
         input_turn(chart)
 
     return temp
@@ -68,8 +68,7 @@ def game_loop():
         input_turn('O')
         print_board(board)
     
-
-print('Hello in tic-tac-toe\n')
+print('\x1b[2;30;44m' + 'Hello in tic-tac-toe'  + '\x1b[0m')
 
 
 game_loop()
