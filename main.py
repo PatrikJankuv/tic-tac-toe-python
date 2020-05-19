@@ -69,6 +69,7 @@ def game_loop():
         print_board(board)
         turns += 1
         if(check_game_over(board)):
+            print('\x1b[7;32;40m' + 'Player1 won'  + '\x1b[0m')
             break
 
         # board is full
@@ -82,11 +83,12 @@ def game_loop():
         turns += 1
 
         if(check_game_over(board)):
+            print('\x1b[7;32;40m' + 'Player2 won'  + '\x1b[0m')
             break
     
 
 def check_game_over(board):
-    if(check_game_over_horizontal(board) | check_game_over_vertical(board)):
+    if(check_game_over_horizontal(board) | check_game_over_vertical(board) | check_game_over_diagonal(board)):
         print('\x1b[7;32;40m' + 'Game over'  + '\x1b[0m')
         return True
 
@@ -102,6 +104,15 @@ def check_game_over_vertical(board):
         if(board[0][i] == board[1][i] == board[2][i]):
             return True
     
+    return False
+
+def check_game_over_diagonal(board):
+    if(board[0][0] == board[1][1] == board[2][2]):
+        return True
+
+    if(board[0][2] == board[1][1] == board[2][0]):
+        return True
+
     return False
 
 print('\x1b[2;30;44m' + 'Hello in tic-tac-toe'  + '\x1b[0m')
